@@ -1,0 +1,46 @@
+#Define a classe Produto
+classProduto:
+#define o construtor self construtor= utilizado para inicializar um objeto logo após a criação
+   def __init__(self):
+       self.__nome =""
+       self.__valor=""
+       self.__quantidade = ""
+# getter nome
+   def get_Nome(self):
+       return self.__nome
+# setter nome
+   def set_Nome(self, nome):
+       self.__nome =nome
+   def get_Valor(self):
+      return self.__valor
+   def set_Valor(self,valor):
+       self.__valor=valor
+   def get_Quantidade(self):
+      return self.__quantidade
+   def set_Quantidade(self,quantidade):
+       self.__quantidade = quantidade
+
+       # Método cadastrar
+   def cadastrarProduto(self):
+      print("\n=== Cadastro de Produtos ===")
+nome = input("Digite o nome do produto: ")
+quantidade = int(input("Digite a quantidade do produto: "))
+valor = float(input("Digite o valor do produto: "))
+self.set_Nome(nome)
+self.set_Valor(valor)
+self.set_Quantidade(quantidade)
+print("Produto cadastrado com sucesso!")
+# Método mostrar
+def mostrarProduto(self):
+print("\n=== Dados do Produto ===")
+print("Nome do Produto:", self.get_Nome())
+print("Quantidade:", self.get_Quantidade())
+print("Valor:", self.get_Valor())
+#método calcular
+def valor_total(self):
+return self.__valor * self.__quantidade
+ENCAPSULAMENTO
+EXEMPLO DE ENCAPSULAMENTO CLASSE PRODUTO
+Para armazenar os valores digitados dentro dos 
+atributos são utilizados o settersex: setNome
+Para mostrar os valores usa os getters ex: 

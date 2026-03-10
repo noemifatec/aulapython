@@ -1,9 +1,0 @@
-class Produto:
-   def __init__(self):
-      self.__nome = ""
-      self.__valor = 0.0
-      self.__qtd = 0
-
-#Encapsulamento
-#getter nome
-def get_Nome
