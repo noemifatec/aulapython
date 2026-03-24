@@ -1,0 +1,33 @@
+from tkinter import *
+
+class Aplicacao:
+    def __init__(self):
+        self.root = Tk()
+        self.root.title("Minha Calculadora")
+        self.frame = Frame(self.root)
+        self.frame.pack(padx=20, pady=20)
+        self.criar_componentes()
+
+    def criar_componentes(self):
+        # Campo Número 2
+        Label(self.frame, text="Número 2:").grid(row=3, column=0, sticky="w")
+        self.txt_n2 = Entry(self.frame)
+        self.txt_n2.grid(row=3, column=1, pady=5)
+
+        # Resultado
+        Label(self.frame, text="Resultado: ").grid(row=4, column=0, sticky="w", pady=2)
+        
+        # SOLUÇÃO: Criar o widget antes de chamar o .grid()
+        self.txt_resul = Label(self.frame, text="...", fg="blue") 
+        self.txt_resul.grid(row=4, column=1, pady=5)
+
+        # Botão
+        self.btn_botao = Button(self.frame, text="Calcular", command=self.calcular)
+        self.btn_botao.grid(row=5, column=0, columnspan=2, pady=15)
+
+    def calcular(self):
+        # Exemplo simples de feedback
+        self.txt_resul.config(text="Calculado!")
+
+    def executar(self):
+        self.root.mainloop()
