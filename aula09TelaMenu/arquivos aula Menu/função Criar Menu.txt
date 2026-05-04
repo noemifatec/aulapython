@@ -1,0 +1,24 @@
+    def criar_menu(self):
+     
+        
+        barra_menus = Menu(self.tela)
+        opcoes_menus_arquivos = Menu(barra_menus)
+        opçoes_menus_gestao = Menu(barra_menus)
+        opcoes_novo = Menu(opcoes_menus_arquivos)
+
+        barra_menus.add_cascade(label="Arquivo", menu=opcoes_menus_arquivos)
+        opcoes_menus_arquivos.add_cascade(label="Novo", menu=opcoes_novo )
+
+        opcoes_novo.add_command(label="Cadastrar")
+
+        opcoes_menus_arquivos.add_command(label="Abrir")
+        opcoes_menus_arquivos.add_command(label="Salvar")
+
+        opcoes_menus_arquivos.add_separator()
+        opcoes_menus_arquivos.add_command(label="Sair", command=self.tela.quit)
+
+
+        barra_menus.add_cascade(label="Gestão", menu=opçoes_menus_gestao)
+        opçoes_menus_gestao.add_command(label="Animais", command=self.abrir_animais)
+        opçoes_menus_gestao.add_command(label="Clientes",command=self.abrir_clientes)
+        self.tela.config(menu=barra_menus)

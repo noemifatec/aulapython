@@ -1,0 +1,24 @@
+ def validar_acesso(self):
+        usuario = self.txt_usuario.get()
+        senha = self.txt_senha.get()
+
+        if usuario == "admin" and senha == "123":
+            self.abrir_menu()
+        else:
+            messagebox.showerror(
+                "Erro de Login",
+                "Usuário ou senha incorretos"
+            )
+
+    def abrir_menu(self):
+        self.tela.destroy()
+        subprocess.run([sys.executable, "Menu.py"])
+
+    def sair(self):
+        resposta = messagebox.askquestion(
+            "Sair do Sistema?",
+            "Você tem certeza que deseja sair?"
+        )
+
+        if resposta == "yes":
+            self.tela.destroy()

@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk, filedialog
+from PIL import Image, ImageTk
 
 import sys
 

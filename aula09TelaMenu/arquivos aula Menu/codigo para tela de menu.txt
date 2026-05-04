@@ -1,0 +1,103 @@
+import tkinter as tk
+from tkinter import Menu, Label, Button, messagebox
+import subprocess
+import sys
+import os
+
+# Instale a biblioteca Pillow caso de erro
+try:
+    from PIL import Image, ImageTk
+except:
+    os.system(f'"{sys.executable}" -m pip install pillow')
+    from PIL import Image, ImageTk
+
+
+class TelaMenuSistema:
+
+    def __init__(self):
+        self.tela = tk.Tk()
+        self.tela.title("TELA MENU SISTEMAS")
+
+        self.largura = 1000
+        self.altura = 700
+
+        self.centralizar_tela()
+        
+
+        self.carregar_imagem_fundo()
+        self.criar_menu()
+        self.carregar_icones()
+        self.criar_botoes()
+
+        self.tela.mainloop()
+
+
+    # CENTRALIZAR TELA   
+    def centralizar_tela(self):
+            
+        largura_screen = self.tela.winfo_screenwidth()
+        altura_screen = self.tela.winfo_screenheight()
+        posx = largura_screen/2 - self.largura/2
+        posy = altura_screen/2 - self.altura/2
+        print(largura_screen, altura_screen)
+        self.tela.geometry("%dx%d+%d+%d" % (self.largura,self.altura, posx,posy))
+        self.tela.resizable(False,False)
+
+ 
+    # IMAGEM FUNDO   
+    def carregar_imagem_fundo(self):
+        caminho = r"icones\imagem_fundo.jpg"
+
+        if os.path.exists(caminho):
+            imagem = Image.open(caminho)
+            imagem = imagem.resize((1000, 700))
+            self.imagem_fundo = ImageTk.PhotoImage(imagem)
+
+            self.lbl_fundo = Label(self.tela, image=self.imagem_fundo)
+            self.lbl_fundo.place(x=0, y=0)
+        else:
+            self.tela.configure(bg="lightblue")
+
+
+    # CRIAR MENU   
+
+
+    # ÍCONES
+
+    def carregar_icones(self):
+        self.logo = self.carregar_png(r"icones\logo.png", 70, 70)
+        self.animais = self.carregar_png(r"icones\logo_animais.png", 80, 80)
+        self.clientes = self.carregar_png(r"icones\logo_usuarios.png", 80, 80)
+        self.servicos = self.carregar_png(r"icones\logo_servicos.png", 80, 80)
+        self.logout_img = self.carregar_png(r"icones\logout.png", 80, 80)
+
+    def carregar_png(self, caminho, largura, altura):
+        if os.path.exists(caminho):
+            img = Image.open(caminho)
+            img = img.resize((largura, altura))
+            return ImageTk.PhotoImage(img)
+        return None
+
+
+    # BOTÕES   
+    def criar_botoes(self):
+
+        Label(self.tela,text="SISTEMA MENU",image=self.logo,compound="top",font=("Arial", 10, "bold")).place(x=880, y=560)
+
+        Button(self.tela,text="Animais",image=self.animais,compound="top",command=self.abrir_animais, width=100).place(x=100, y=200)
+
+        Button(self.tela,text="Clientes",image=self.clientes,compound="top",command=self.abrir_clientes,width=100).place(x=320, y=200)
+
+        Button(self.tela,text="Serviços",image=self.servicos,compound="top",command=self.servicos_msg,width=100).place(x=540, y=200)
+
+        Button(self.tela,text="Logout",image=self.logout_img,compound="top",command=self.logout,width=100).place(x=760, y=200)
+
+ 
+    # MÉTODOS PARA CHAMAR TELAS
+   
+
+
+# EXECUTAR
+
+if __name__ == "__main__":
+    TelaMenuSistema()
